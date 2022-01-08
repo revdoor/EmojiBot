@@ -139,4 +139,3 @@ try:
     bot.run(os.environ['token'])
 except Exception as e:
     print(e)
-    input()
