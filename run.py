@@ -8,12 +8,6 @@ from discord.ext import commands
 try:
     dirname = os.path.dirname(os.path.abspath(__file__))
     
-    # getting token from token.txt
-    token_path = dirname + "/token.txt"
-    t = open(token_path, "r")
-    token = t.readline().rstrip()
-    print("Token key: ", token)
-    
     game = discord.Game("로아 이모티콘")
     bot = commands.Bot(command_prefix="[", status=discord.Status.online, activity=game)
     
@@ -142,7 +136,7 @@ try:
     async def ninab_pray(ctx):
         await send_image(ctx, "니나브욤8_modified.png")
     
-    bot.run(token)
+    bot.run(os.environ['token'])
 except Exception as e:
     print(e)
     input()
