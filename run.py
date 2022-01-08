@@ -6,8 +6,6 @@ import random
 from discord.ext import commands
 
 try:
-    dirname = os.path.dirname(os.path.abspath(__file__))
-    
     game = discord.Game("로아 이모티콘")
     bot = commands.Bot(command_prefix="[", status=discord.Status.online, activity=game)
     
@@ -22,7 +20,7 @@ try:
     async def send_image(ctx, img_name):
         await ctx.channel.purge(limit=1, check=lambda m: m.author == ctx.author)
         await ctx.send(f"{ctx.author.nick if ctx.author.nick else ctx.author.name}:")
-        await ctx.send(file=discord.File(dirname+"/emoji/"+img_name))
+        await ctx.send(file=discord.File("/emoji/"+img_name))
     
     @bot.command(name="놀자에요]")
     async def letsplay(ctx):
