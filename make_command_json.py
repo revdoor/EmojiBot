@@ -35,7 +35,15 @@ command_data = {"[놀자에요]": "놀자에요_half.png",
                 "[향기]": "01_모코코콘1_18_슬퍼_modified.png",
                 "[기분좋은향기]": "01_모코코콘1_18_슬퍼_modified.png",
                 "[털썩로아콘]": "01_모코코콘1_24_모무룩_modified.png",
-                "[털썩]": "01_모코코콘1_24_모무룩_modified.png"}
+                "[털썩]": "01_모코코콘1_24_모무룩_modified.png",
+                "[기도해욤]": "니나브욤1_resize.png",
+                "[발사해욤]": "니나브욤2_resize.png",
+                "[빼꼼이욤]": "니나브욤3_resize.png",
+                "[불만이욤]": "니나브욤4_resize.png",
+                "[맛있어욤]": "니나브욤5_resize.png",
+                "[피곤해욤]": "니나브욤6_resize.png",
+                "[니야호욤]": "니나브욤7_resize.png",
+                "[큰일이욤]": "니나브욤8_resize.png"}
 
 with open("command.json", "w", encoding="utf-8") as json_file:
     json_file.write(json.dumps(command_data, ensure_ascii=False))
