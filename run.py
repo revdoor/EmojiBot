@@ -39,11 +39,17 @@ try:
         if res:
             ctx = await bot.get_context(message)
             await send_image(ctx, command_data[key])
+        
+        if text == "[도움말]" or text == "<도움말>":
+            await help_message(ctx)
     
     async def send_image(ctx, img_name):
         await ctx.channel.purge(limit=1, check=lambda m: m.author == ctx.author)
-        await ctx.send(f"{ctx.author.nick if ctx.author.nick else ctx.author.name}:")
-        await ctx.send(file=discord.File("emoji/"+img_name))
+        await ctx.send(content=f"{ctx.author.nick if ctx.author.nick else ctx.author.name}:",
+                       file=discord.File("emoji/"+img_name))
+    
+    async def help_message(ctx):
+        pass
     
     bot.run(os.environ['token'])
 except Exception as e:
