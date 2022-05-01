@@ -49,7 +49,7 @@ try:
                        file=discord.File("emoji/"+img_name))
     
     async def help_message(ctx):
-        pass
+        await ctx.send(content=", ".join(command_data.keys()))
     
     bot.run(os.environ['token'])
 except Exception as e:
