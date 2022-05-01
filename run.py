@@ -41,6 +41,7 @@ try:
             await send_image(ctx, command_data[key])
         
         if text == "[도움말]" or text == "<도움말>":
+            ctx = await bot.get_context(message)
             await help_message(ctx)
     
     async def send_image(ctx, img_name):
