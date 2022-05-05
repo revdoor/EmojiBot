@@ -1,0 +1,4 @@
+heroku login
+heroku git:remote -a discordlostarkbot
+git push heroku main:main
+pause
