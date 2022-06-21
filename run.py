@@ -40,10 +40,14 @@ try:
         if res:
             ctx = await bot.get_context(message)
             await send_image(ctx, command_data[key])
+            return
         
         if text == "[도움말]" or text == "<도움말>":
             ctx = await bot.get_context(message)
             await help_message(ctx)
+            return
+        
+        await bot.process_commands(message)
     
     async def send_image(ctx, img_name):
         await ctx.channel.purge(limit=1, check=lambda m: m.author == ctx.author)
