@@ -54,11 +54,6 @@ try:
         await ctx.send(content=", ".join(command_data.keys()))
     
     @bot.command()
-    async def play(ctx):
-        channel = ctx.author.voice.channel
-        await channel.connect()
-    
-    @bot.command()
     async def play(ctx, url):
         channel = ctx.author.voice.channel
         if bot.voice_clients == []:
