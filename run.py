@@ -62,7 +62,7 @@ try:
         channel = ctx.author.voice.channel
         if bot.voice_clients == []:
             await channel.connect()
-            await ctx.send("connected to the voice channel, " + str(bot.voice_clients[0].channel))
+            await ctx.send("{} 음성 채널에 연결하였습니다".format(str(bot.voice_clients[0].channel)))
     
         ydl_opts = {'format': 'bestaudio'}
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
@@ -77,21 +77,21 @@ try:
         if not bot.voice_clients[0].is_paused():
             bot.voice_clients[0].pause()
         else:
-            await ctx.send("already paused")
+            await ctx.send("이미 일시정지된 상태입니다")
     
     @bot.command()
     async def resume(ctx):
         if bot.voice_clients[0].is_paused():
             bot.voice_clients[0].resume()
         else:
-            await ctx.send("already playing")
+            await ctx.send("이미 재생중입니다")
     
     @bot.command()
     async def stop(ctx):
         if bot.voice_clients[0].is_playing():
             bot.voice_clients[0].stop()
         else:
-            await ctx.send("not playing")    
+            await ctx.send("재생중이 아닙니다")
     
     @bot.command()
     async def leave(ctx):
