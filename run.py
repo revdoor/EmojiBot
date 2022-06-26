@@ -116,8 +116,9 @@ try:
         try:
             draw_no = int(draw_no)
             
-            await ctx.send("{}에서 {}개를 뽑습니다.\n뽑은 값들은 {}입니다.".format(names, draw_no,
-                                                                                   " ".join([random.choice(names) for _ in range(draw_no)])))
+            await ctx.send("{} 중에서 {}개를 뽑습니다.\n뽑은 값{}은 <{}>입니다.".format(" ".join(list(names)), draw_no,
+                                                                                        "들" if draw_no > 1 else "",
+                                                                                        " ".join([random.choice(names) for _ in range(draw_no)])))
         except:
             pass
     
