@@ -118,6 +118,8 @@ try:
             
             await ctx.send("{}에서 {}개를 뽑습니다.\n뽑은 값들은 {}입니다.".format(names, draw_no,
                                                                                    " ".join([random.choice(names) for _ in range(draw_no)])))
+        except:
+            pass
     
     bot.run(os.environ['token'])
 except Exception as e:
