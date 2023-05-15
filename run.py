@@ -56,7 +56,7 @@ try:
         global command_data
         
         ctx = await bot.get_context(message)
-        text = message.contentr
+        text = message.content
 
         if text in command_data:
             await ctx.channel.purge(limit=1, check=lambda m: m.author == ctx.author)
