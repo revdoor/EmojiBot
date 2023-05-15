@@ -15,10 +15,13 @@ scope = [
 'https://spreadsheets.google.com/feeds',
 'https://www.googleapis.com/auth/drive',
 ]
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(os.environ['json'], scope)
+json_data = json.loads(os.environ['json'])
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(json_data, scope)
 gc = gspread.authorize(credentials)
 spreadsheet_url = os.environ['spreadsheet']
 doc = gc.open_by_url(spreadsheet_url)
+
+manager = json.loads(os.environ['manager'])
 
 
 def get_command_info():
@@ -64,7 +67,7 @@ try:
             await help_message(ctx)
             return
         
-        if text == "리로드" and ctx.author.name in os.environ['manager']:
+        if text == "리로드" and ctx.author.name in manager:
             command_data = dict()
             await get_command_info()
 
