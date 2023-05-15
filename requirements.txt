@@ -3,3 +3,5 @@ asyncio
 youtube_dl
 PyNaCl
 ffmpeg
+gspread
+oauth2client
