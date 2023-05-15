@@ -40,8 +40,13 @@ def get_command_info():
 
 try:
     game = discord.Game("로아 이모티콘")
+
+    intents = discord.Intents.default()
+    intents.messages = True
+    intents.members = True
+    intents.message_contents = True
     bot = commands.Bot(command_prefix="~~", status=discord.Status.online, activity=game,
-                       intents=discord.Intents.all())
+                       intents=intents)
     
     command_data = dict()
 
