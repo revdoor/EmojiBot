@@ -15,7 +15,7 @@ scope = [
 'https://spreadsheets.google.com/feeds',
 'https://www.googleapis.com/auth/drive',
 ]
-credentials = ServiceAccountCredentials.from_json(os.environ['json'], scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(os.environ['json'], scope)
 gc = gspread.authorize(credentials)
 spreadsheet_url = os.environ['spreadsheet']
 doc = gc.open_by_url(spreadsheet_url)
@@ -49,17 +49,24 @@ try:
 
     @bot.event
     async def on_message(message):
+        global command_data
+        
+        ctx = await bot.get_context(message)
         text = message.contentr
 
         if text in command_data:
             await ctx.channel.purge(limit=1, check=lambda m: m.author == ctx.author)
+            await ctx.send(f"{ctx.author.nick if ctx.author.nick else ctx.author.name}:")
             await ctx.send(command_data[text])
             return
 
         if text == "[도움말]" or text == "<도움말>":
-            ctx = await bot.get_context(message)
             await help_message(ctx)
             return
+        
+        if text == "리로드" and ctx.author.name in os.environ['manager']:
+            command_data = dict()
+            await get_command_info()
 
         await bot.process_commands(message)
 
