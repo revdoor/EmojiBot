@@ -73,9 +73,10 @@ try:
             await help_message(ctx)
             return
         
-        if text == "리로드" and ctx.author.name in manager:
+        #if text == "리로드" and ctx.author.name in manager:
+        if text == '리로드':
             command_data = dict()
-            await get_command_info()
+            get_command_info()
 
         await bot.process_commands(message)
 
