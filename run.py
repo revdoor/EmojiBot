@@ -26,15 +26,15 @@ manager = json.loads(os.environ['manager'])
 
 def get_command_info():
     global command_data
-    
+
     command_no = int(doc.worksheet('number').acell('A1').value)
-    
+
     command_raw = doc.worksheet('command').range(f'A1:B{command_no}')
-    
+
     for i in range(command_no):
         name = command_raw[2*i].value
         url = command_raw[2*i+1].value
-        
+
         command_data[name] = url
 
 
@@ -47,8 +47,8 @@ try:
     intents.message_content = True
     bot = commands.Bot(command_prefix="~~", status=discord.Status.online, activity=game,
                        intents=intents)
-    
-    command_data = dict()
+
+    command_data = {}
 
     get_command_info()
 
@@ -59,7 +59,7 @@ try:
     @bot.event
     async def on_message(message):
         global command_data
-        
+
         ctx = await bot.get_context(message)
         text = message.content
 
@@ -72,10 +72,10 @@ try:
         if text == "[도움말]" or text == "<도움말>":
             await help_message(ctx)
             return
-        
+
         #if text == "리로드" and ctx.author.name in manager:
         if text == '리로드':
-            command_data = dict()
+            command_data = {}
             get_command_info()
 
         await bot.process_commands(message)
